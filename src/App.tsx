@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import MindCanvas from '@/components/editor/MindCanvas'
+import { Button } from '@/components/ui/button'
+import { PanelLeft, Download, Settings2 } from 'lucide-react'
 
-function App() {
-  const [count, setCount] = useState(0)
-
+export default function App() {
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <div className="flex h-screen w-screen flex-col bg-background text-foreground">
+      <header className="flex h-14 shrink-0 items-center justify-between border-b border-border px-4">
+        <div className="flex items-center gap-3">
+          <span className="text-lg font-semibold">
+            Nodora
+          </span>
+
+          <div className="bg-red-200 text-zinc-50 dark:bg-white dark:text-zinc-950 w-4 h-4" />
+
+          <span className="text-sm text-muted-foreground">
+            Untitled Mind Map
+          </span>
+        </div>
+
+        <div className="flex items-center gap-2">
+          <Button variant="ghost" size="icon">
+            <PanelLeft />
+          </Button>
+
+          <Button variant="outline" size="sm">
+            <Download />
+            导出
+          </Button>
+          <Button variant="ghost" size="icon">
+            <Settings2 />
+          </Button>
+          <div className="bg-zinc-950 text-zinc-50 dark:bg-white dark:text-zinc-950" />
+        </div>
+      </header>
+
+      <main className="min-h-0 flex-1">
+        <MindCanvas />
+      </main>
+    </div>
   )
 }
-
-export default App
