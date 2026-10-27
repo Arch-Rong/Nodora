@@ -57,7 +57,11 @@ const initialEdges: Edge[] = [
   },
 ]
 
-export default function MindCanvas() {
+interface MindCanvasProps {
+  colorMode: 'light' | 'dark'
+}
+
+export default function MindCanvas({ colorMode }: MindCanvasProps) {
   const [nodes, setNodes, onNodesChange] =
     useNodesState(initialNodes)
 
@@ -82,7 +86,7 @@ export default function MindCanvas() {
         onNodesChange={onNodesChange}
         onEdgesChange={onEdgesChange}
         onConnect={onConnect}
-        colorMode="system"
+        colorMode={colorMode}
         fitView
       >
         <Background

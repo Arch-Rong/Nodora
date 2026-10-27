@@ -16,7 +16,7 @@ export default function MarkdownEditor({
   const extensions = useMemo(() => [markdown()], [])
 
   return (
-    <div className="h-full min-h-0 overflow-hidden bg-background">
+    <div className="nodora-editor h-full min-h-0 overflow-hidden bg-background">
       <CodeMirror
         value={value}
         onChange={onChange}
