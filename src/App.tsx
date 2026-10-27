@@ -3,7 +3,7 @@ import MindCanvas from '@/components/editor/MindCanvas'
 import MarkdownEditor from '@/components/editor/MarkdownEditor'
 import { Button } from '@/components/ui/button'
 import { readTheme, writeTheme, type ThemeMode } from '@/lib/theme'
-import { PanelLeft, Download } from 'lucide-react'
+import { PanelLeft, Download, Sun, Moon } from 'lucide-react'
 
 const initialMarkdown = `# Nodora 思维导图
 
@@ -47,33 +47,14 @@ export default function App() {
             <PanelLeft />
           </Button>
 
-          <div
-            role="group"
-            aria-label="外观"
-            className="flex items-center rounded-full bg-muted p-0.5"
+          <Button
+            variant="ghost"
+            size="icon-sm"
+            onClick={() => chooseTheme(theme === 'dark' ? 'light' : 'dark')}
+            aria-label={theme === 'dark' ? '切换到白天' : '切换到暗黑'}
           >
-            {([
-              ['light', '白天'],
-              ['dark', '暗黑'],
-            ] as const).map(([value, label]) => {
-              const active = theme === value
-              return (
-                <button
-                  key={value}
-                  type="button"
-                  aria-pressed={active}
-                  onClick={() => chooseTheme(value)}
-                  className={`h-7 rounded-full px-3 text-xs transition-colors ${
-                    active
-                      ? 'bg-background text-foreground shadow-[0_1px_1px_oklch(0_0_0/8%)] dark:bg-foreground dark:text-background'
-                      : 'text-muted-foreground hover:text-foreground'
-                  }`}
-                >
-                  {label}
-                </button>
-              )
-            })}
-          </div>
+            {theme === 'dark' ? <Moon /> : <Sun />}
+          </Button>
 
           <Button variant="outline" size="sm" disabled>
             <Download />
